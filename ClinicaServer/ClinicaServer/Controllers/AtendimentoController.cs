@@ -28,9 +28,7 @@ namespace ClinicaServer.Controllers
         [HttpGet]
         public List<Atendimento> GetAtendimentos()
         {
-            //return _repository.Atendimento.FindAll().OrderByDescending(x => x.Datahoraatendimento).ToList<Atendimento>();
             List<Atendimento> lista= _repository.Atendimento.FindByConditionAndInclude(x=>x.Id==x.Id, "Examecovid").OrderByDescending(x => x.Datahoraatendimento).ToList<Atendimento>();
-            //Console.WriteLine("id paciente="+lista.First().Paciente.Id);
             return lista;
         }
 

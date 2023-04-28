@@ -245,7 +245,7 @@ namespace ClinicaServer.Controllers
         }
 
 
-
+        
 
         [HttpPost("{pacienteid}/Atendimento/{atendimentoid}/Examecovid/{examecovidid}")]
         public bool UpdateExamecovidByFuncionarioAndAtendimento([FromBody] Examecovid examecovid, uint pacienteid, uint atendimentoid, uint examecovidid)
@@ -253,6 +253,7 @@ namespace ClinicaServer.Controllers
 
             try
             {
+                
                 //Examecovid examecoviddb = _repository.Examecovid.FindByCondition(x => x.Id == examecovidid && x.Atendimentoid == atendimentoid && x.Atendimento.Pacienteid == pacienteid && x.Concluido == false).ToList<Examecovid>().ElementAt<Examecovid>(0);
                 examecovid.Id = examecovidid;
                 examecovid.Atendimentoid = atendimentoid;
@@ -266,9 +267,24 @@ namespace ClinicaServer.Controllers
             Response.StatusCode = 400;
             return false;
         }
+        
+        /*
+        [HttpPost("{pacienteid}/Atendimento/{atendimentoid}/Examecovid/{examecovid}")]
+        public bool UpdateExamecovidByFuncionarioAndAtendimento([FromBody] Examecovid examecovid,uint pacienteid, uint atendimentoid, uint examecovidid)
+        {
+            try
+            {
+                examecovid.Id = examecovidid;
+                examecovid.Atendimentoid = atendimentoid;
+                examecovid.Concluido = true;
+                return _repository.Examecovid.update(examecovid) > 0;
+            }
+            catch
+            {
 
-
-
-
+            }
+            return false;
+        } 
+        */
     }
 }
