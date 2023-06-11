@@ -22,7 +22,8 @@ namespace ClinicaServer.Controllers
         [HttpGet]
         public List<Paciente> GetAll()
         {
-            return _repository.Paciente.FindAll().ToList();
+            return _repository.Paciente.FindAll().OrderBy(p=>p.Nome).ToList();     
+        
         }
 
         [HttpGet("{id}")]
